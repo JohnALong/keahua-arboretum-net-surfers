@@ -1,12 +1,13 @@
 import sys
 sys.path.append('../')
 
-from environments.environment import Environment
+from environments.biomes import Biome
 from interfaces.habitats import IStagnant
+
 # from animals.
 
 
-class Swamp(Environment):
+class Swamp(IContainsAnimals, IContainsPlants, Biome):
 
     def __init__(self, name):
       self.name = name
