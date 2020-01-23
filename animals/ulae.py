@@ -1,7 +1,5 @@
 from animals import Animal
-from interfaces import Identifiable
 
-class Ulae(Animal, Identifiable):
+class Ulae(Animal):
     def __init__(self):
         Animal.__init__(self, "'Ulae'")
-        Identifiable.__init__(self)
