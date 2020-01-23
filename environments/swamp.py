@@ -4,6 +4,10 @@ sys.path.append('../')
 from environments.biomes import Biome
 from interfaces.habitats import IStagnant
 
+from environments.environment import Environment
+# TODO need to create environment parent class
+from interfaces.habitats import IStagnant
+# TODO need to create IStagnant among other interfaces for habitats
 # from animals.
 
 

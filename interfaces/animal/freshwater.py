@@ -1,6 +1,6 @@
-from interfaces import IAquatic
 
-class IFreshwater(IAquatic):
+
+class IFreshwater():
 
     def __init__(self):
         super().__init__()
