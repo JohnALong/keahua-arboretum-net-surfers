@@ -13,8 +13,8 @@ class Swamp(Biome):
 
 class River(Biome):
 
-    def __init__(self, name):
-      Biome.__init__(self, name)
+    def __init__(self):
+      Biome.__init__(self, "River")
 
     def add_animal(self, animal):
         try:
