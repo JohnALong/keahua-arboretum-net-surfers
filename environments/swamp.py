@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../')
 
-from environments.biomes import Biome
+from environments import Biome
 # from interfaces.habitats import IStagnant
 
 

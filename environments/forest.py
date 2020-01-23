@@ -1,4 +1,4 @@
-from environments.biomes import Biome
+from environments import Biome
 
 class Forest(Biome):
     def __init__(self):

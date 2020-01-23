@@ -2,7 +2,7 @@ from interfaces import IAquatic
 # from interfaces import IContainsAnimals
 # from interfaces import IContainsPlants
 from animals import RiverDolphin
-from environments.biomes import Biome
+from environments import Biome
 
 class River(Biome):
 
