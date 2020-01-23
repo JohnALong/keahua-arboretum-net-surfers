@@ -1,3 +1,5 @@
+## PURPOSE: Base/super class for that all animal classes inherit from
+
 class Animal:
 
     def __init__(self, species):
