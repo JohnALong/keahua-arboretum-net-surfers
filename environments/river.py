@@ -4,13 +4,6 @@ from interfaces import IAquatic
 from animals import RiverDolphin
 from environments.biomes import Biome
 
-class Swamp(Biome):
-
-    def __init__(self, name):
-        Biome.__init__(self, name)
-
-
-
 class River(Biome):
 
     def __init__(self):
