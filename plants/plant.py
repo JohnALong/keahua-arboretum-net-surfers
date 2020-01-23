@@ -1,5 +1,13 @@
+from interfaces import Identifiable
+
+
 class Plant:
 
     def __init__(self, species, season):
-      self.species = species
-      self.peak_season = season
+
+        Identifiable.__init__(self)
+        self.species = species
+        self.sunlight = ""
+        self.seeds_produced = 0
+        self.insecticide_resistance = ""
+        self.peak_season = season
