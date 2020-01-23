@@ -2,7 +2,9 @@ import sys
 sys.path.append('../')
 
 from environments.environment import Environment
+# TODO need to create environment parent class
 from interfaces.habitats import IStagnant
+# TODO need to create IStagnant among other interfaces for habitats
 # from animals.
 
 
