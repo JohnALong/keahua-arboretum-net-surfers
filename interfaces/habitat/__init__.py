@@ -1,0 +1,3 @@
+
+from interfaces.habitat.contains_animals import IContainsAnimals
+from interfaces.habitat.contains_plants import IContainsPlants
