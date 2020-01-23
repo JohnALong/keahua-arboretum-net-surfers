@@ -1,5 +1,4 @@
-from interfaces import Identifiable
-
+from interfaces import identifiable
 
 class Plant:
 
