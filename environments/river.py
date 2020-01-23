@@ -2,19 +2,12 @@ from interfaces import IAquatic
 # from interfaces import IContainsAnimals
 # from interfaces import IContainsPlants
 from animals import RiverDolphin
-from environments.biomes import Biome
-
-class Swamp(Biome):
-
-    def __init__(self, name):
-        Biome.__init__(self, name)
-
-
+from environments import Biome
 
 class River(Biome):
 
-    def __init__(self, name):
-      Biome.__init__(self, name)
+    def __init__(self):
+        Biome.__init__(self, "River")
 
     def add_animal(self, animal):
         try:
