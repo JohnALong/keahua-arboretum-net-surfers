@@ -33,7 +33,7 @@ def main_menu():
         release_animal(keahua)
 
     if choice == "3":
-        pass4
+        feed_animal(keahua)
 
     if choice == "4":
         add_plant()
