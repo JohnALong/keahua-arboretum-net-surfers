@@ -36,7 +36,7 @@ def main_menu():
         pass
 
     if choice == "4":
-        add_plant()
+        add_plant(keahua)
 
     if choice == "5":
         build_facility_report(keahua)
