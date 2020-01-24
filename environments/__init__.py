@@ -1,4 +1,4 @@
-from .biomes import Biome
+from .biome import Biome
 from .river import River
 from .mountain import Mountain
 from .swamp import Swamp

@@ -1,6 +1,6 @@
 import os
 from arboretum import Arboretum
-# from actions.annex import annex_habitat
+from actions import annex_habitat
 # from actions.release_animal import release_animal
 from actions.report import build_facility_report
 from actions.add_plant import add_plant
@@ -47,6 +47,7 @@ def main_menu():
 
 
 main_menu()
+
 
 
 
