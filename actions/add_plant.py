@@ -24,7 +24,7 @@ def add_plant():
     if choice != "5":
         pass
     
-        
+    
     # for index, river in enumerate(arboretum.rivers):
     #     print(f'{index + 1}. River {river.id}')
 
