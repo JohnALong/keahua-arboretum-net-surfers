@@ -23,6 +23,7 @@ def release_animal(arboretum):
 
     if choice == "1":
         animal = GoldDustDayGecko()
+        biome_options = []
 
     if choice == "2":
         animal = RiverDolphin()
@@ -45,12 +46,28 @@ def release_animal(arboretum):
     if choice == "8":
         animal = HawaiianHappyfaceSpider()
 
-    for index, river in enumerate(arboretum.rivers):
-        print(f'{index + 1}. River {river.id}')
+    for index, habitat in enumerate(animal.habitats):
+        print(f'{index + 1}. {habitat}')
 
-    print("Release the animal into which biome?")
+    
+    # for index, river in enumerate(arboretum.rivers):
+    #     print(f'{index + 1}. River {river.id}')
+
+    print(f'Select a biome type to release the {animal.species} into.')
     choice = input("> ")
 
-    arboretum.rivers[int(choice) - 1].animals.append(animal)
+    for index, biome in enumerate(arboretum.biomes[choice]):
+        if len(arboretum.biomes[choice]) == 0:
+            print(f'No {choice} in your arboretum yet.')
+            input("\n\nPress any key to return to main menu...")
+            return
+        print(f'{index + 1}. {biome.name}')
+
+    print(f'Select the specific {choice[:-1]} to release the animal!')
+    new_home = input("> ")
+
+    arboretum.biomes[choice][new_home].append(animal)
+
+    # arboretum.rivers[int(choice) - 1].animals.append(animal)
 
 
