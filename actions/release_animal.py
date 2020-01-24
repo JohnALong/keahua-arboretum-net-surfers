@@ -1,3 +1,5 @@
+import os
+
 from animals import RiverDolphin
 from animals import GoldDustDayGecko
 from animals import HawaiianHappyfaceSpider
@@ -8,6 +10,16 @@ from animals import Kikakapu
 from animals import Pueo
 
 def release_animal(arboretum):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    current_biome_count = 0
+    for biome in arboretum.biomes:
+        if len(arboretum.biomes[biome]) > 0:
+            current_biome_count += 1
+
+    if current_biome_count == 0:
+        input('No biomes created. Press any key to return to main menu to add one...')
+        return
+
     animal = None
 
     print('1. Gold Dust Day Gecko')
@@ -45,22 +57,30 @@ def release_animal(arboretum):
     if choice == "8":
         animal = HawaiianHappyfaceSpider()
 
+    os.system('cls' if os.name == 'nt' else 'clear')
     # setup dict and display ONLY biomes that the animal choice can go in based on requirements
     choice_dict = dict()
+    actual_count = 0
+    habitats_count = 0
     for index, habitat in enumerate(animal.habitats):
-        print(f'{index + 1}. {habitat}')
-        choice_dict[index] = habitat
+        if len(arboretum.biomes[habitat]) == 0:
+            actual_count += index
+            continue
+        else:
+            habitats_count += 1
+            choice_dict[actual_count] = habitat
+            print(f'{actual_count + 1}. {habitat}')
 
     # user selects biome type
+    if habitats_count == 0:
+        input('No biomes created that this animal can live in. Press any key to return to main menu to add one...')
+        return
+
     print(f'Select a biome type to release the {animal.species} into.')
     choice = input("> ")
-    selected_biome = choice_dict[int(choice) - 1]
 
-    # 
-    if len(arboretum.biomes[selected_biome]) == 0:
-        print(f'No {selected_biome} in your arboretum yet.')
-        input("\n\nPress any key to return to main menu...")
-        return
+    os.system('cls' if os.name == 'nt' else 'clear')
+    selected_biome = choice_dict[int(choice) - 1]
 
     # targets specific previously created biome list in arboretum
     for index, biome in enumerate(arboretum.biomes[selected_biome]):
@@ -68,11 +88,14 @@ def release_animal(arboretum):
 
     print(f'Select the specific {selected_biome[:-1]} to release the animal!')
     choice = input("> ")
-    new_home = int(choice) - 1
 
-    arboretum.biomes[selected_biome][new_home].animals.append(animal)
-    for animal in arboretum.biomes[selected_biome][new_home].animals:
+    os.system('cls' if os.name == 'nt' else 'clear')
+    new_home = arboretum.biomes[selected_biome][int(choice) - 1]
+
+    new_home.animals.append(animal)
+    print(f'{new_home.name} Animals')
+    print('-------------')
+    for animal in new_home.animals:
         print(animal.species)
     
-    input('Wait...')
-
+    input('\n\nPress any key to return to main menu...')
