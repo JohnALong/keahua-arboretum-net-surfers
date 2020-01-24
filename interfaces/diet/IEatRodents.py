@@ -2,4 +2,7 @@
 
 class IEatRodents:
     def __init__(self):
-        self.diet = []
+        try:
+            self.diet += ["rats", "mice", "voles"]
+        except AttributeError:
+            self.diet = ["rats", "mice", "voles"]

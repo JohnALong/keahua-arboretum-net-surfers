@@ -2,4 +2,7 @@
 
 class IEatVegetation:
     def __init__(self):
-        self.diet = []
+        try:
+            self.diet += ["grass", "oranges", "bamboo", "apples"]
+        except AttributeError:
+            self.diet = ["grass", "oranges", "bamboo", "apples"]

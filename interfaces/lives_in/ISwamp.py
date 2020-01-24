@@ -2,4 +2,7 @@
 
 class ISwamp:
     def __init__(self):
-        self.lives_in_swamp = True
+        try:
+            self.habitats += ["Swamps"]
+        except AttributeError:
+            self.habitats = ["Swamps"]
