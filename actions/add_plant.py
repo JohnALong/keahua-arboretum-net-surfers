@@ -3,7 +3,7 @@ from plants import Rainbow_Eucalyptus_Tree
 from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
 
-def add_plant(arboretum):
+def add_plant():
     plant = None
 
     print("1. Mountain Apple Tree")
@@ -20,7 +20,7 @@ def add_plant(arboretum):
     if choice == "3":
         plant = Rainbow_Eucalyptus_Tree()
     if choice == "4":
-        planet = Blue_Jade_Vine()
+        plant = Blue_Jade_Vine()
     if choice != "5":
         pass
     
