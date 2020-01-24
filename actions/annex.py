@@ -1,17 +1,38 @@
 import os
 from environments import River
+from environments import Grassland
+from environments import Coastline
+from environments import Forest
+from environments import Swamp
+from environments import Mountain
 
 def annex_habitat(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("1. River")
+    print("1. Mountain")
     print("2. Swamp")
-    print("3. Coastline")
-    print("4. Grassland")
-
+    print("3. Grassland")
+    print("4. Forest")
+    print("5. River")
+    print("6. Coastline")
     choice = input("Choose your habitat > ")
 
     if choice == "1":
+        mountain = Mountain()
+        arboretum.mountains.append(mountain)
+    if choice == "2":
+        swamp = Swamp()
+        arboretum.swamps.append(swamp)
+    if choice == "3":
+        grassland = Grassland()
+        arboretum.grasslands.append(grassland)
+    if choice == "4":
+        forest = Forest()
+        arboretum.forests.append(forest)
+    if choice == "5":
         river = River()
         arboretum.rivers.append(river)
-    if choice == "2":
+    if choice == "6":
+        coastline = Coastline()
+        arboretum.coastlines.append(coastline)
+    if choice != "7":
         pass
