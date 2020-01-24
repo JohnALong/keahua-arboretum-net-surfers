@@ -10,19 +10,20 @@ def build_facility_report(arboretum):
             print(biome_list,":")
             #loop through a list of biomes of a distinct type
             for biome in arboretum.biomes[biome_list]:
-                print (biome, "Id: {}")
+                print (biome, f"Id: {biome.id}")
                 #check if there are any animals in a specific biome
                 if len(biome.animals) > 0:
                     print("Animals: ")
                     #loop through an individual biome's animals
                     for animal in biome.animals:
-                        print(animal.name, f"Id: {animal.id}")
+                        print(animal.species, f"Id: {animal.id}")
                 #check if there are any plants in a specific biome
                 if len(biome.plants) > 0:
                     print("Plants: ")
                     for plant in biome.plants:
-                        print(plant.name, f"Id: {plant.id}")
-            print("-----------------")
+                        print(plant.species, f"Id: {plant.id}")
+                print("-----------")
+            print("-------------------------------")
  
     input("\n\nPress any key to continue...")
  
