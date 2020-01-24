@@ -64,12 +64,12 @@ def release_animal(arboretum):
     habitats_count = 0
     for index, habitat in enumerate(animal.habitats):
         if len(arboretum.biomes[habitat]) == 0:
-            actual_count += index
             continue
         else:
+            actual_count += 1
             habitats_count += 1
-            choice_dict[actual_count] = habitat
-            print(f'{actual_count + 1}. {habitat}')
+            choice_dict[actual_count - 1] = habitat
+            print(f'{actual_count}. {habitat}')
 
     # user selects biome type
     if habitats_count == 0:
