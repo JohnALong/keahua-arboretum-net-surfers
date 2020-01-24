@@ -1,7 +1,7 @@
 import os
 from arboretum import Arboretum
 from actions import annex_habitat
-# from actions.release_animal import release_animal
+from actions import release_animal
 from actions.report import build_facility_report
 from actions.add_plant import add_plant
 
