@@ -3,11 +3,6 @@ from interfaces import Identifiable
 
 class Plant:
 
-    '''
-    Attributes for Plant (all string unless noted):
-    species, sunlight, seed_produced (int), insecticide_resistance, season
-    '''
-
     def __init__(self, species, sunlight, seeds_produced, insecticide_resistance):
 
         Identifiable.__init__(self)
