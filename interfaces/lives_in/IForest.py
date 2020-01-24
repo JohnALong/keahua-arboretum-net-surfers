@@ -2,4 +2,7 @@
 
 class IForest:
     def __init__(self):
-        self.lives_in_forest = True
+        try:
+            self.habitats += ["Forests"]
+        except AttributeError:
+            self.habitats = ["Forests"]
