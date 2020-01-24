@@ -47,7 +47,7 @@ def add_plant(arboretum):
 
     biome_choice = input("Choose your biome > ")
 
-    arboretum.biomes[chosen_habitat][int(biome_choice - 1)].plants.append(plant)
+    arboretum.biomes[chosen_habitat][int(biome_choice) - 1].plants.append(plant)
 
     # for index, river in enumerate(arboretum.rivers):
     #     print(f'{index + 1}. River {river.id}')
