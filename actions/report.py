@@ -1,5 +1,8 @@
 
 def build_facility_report(arboretum):
+    print("Keahua Arboretum:")
+    print("-----------------")
+    print("-----------------")
     #loop through the different types of biomes
     for biome_list in arboretum.biomes:
         #check whether each type of biome has any actually biomes in the arboretum
