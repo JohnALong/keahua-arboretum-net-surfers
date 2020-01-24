@@ -2,6 +2,6 @@
 
 class IGrassland:
     def __init__(self):
-        self.habitats += ["Grassland"]
+        self.habitats += ["Grasslands"]
         except AttributeError:
-            self.habitats = ["Grassland"]
+            self.habitats = ["Grasslands"]

@@ -2,6 +2,6 @@
 
 class IRiver:
     def __init__(self):
-        self.habitats += ["River"]
+        self.habitats += ["Rivers"]
         except AttributeError:
-            self.habitats = ["River"]
+            self.habitats = ["Rivers"]

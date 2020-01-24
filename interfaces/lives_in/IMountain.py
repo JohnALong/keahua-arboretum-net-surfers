@@ -2,6 +2,6 @@
 
 class IMountain:
     def __init__(self):
-        self.habitats += ["Mountain"]
+        self.habitats += ["Mountains"]
         except AttributeError:
-            self.habitats = ["Mountain"]
+            self.habitats = ["Mountains"]

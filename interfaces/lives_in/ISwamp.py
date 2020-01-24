@@ -2,6 +2,6 @@
 
 class ISwamp:
     def __init__(self):
-        self.habitats += ["Swamp"]
+        self.habitats += ["Swamps"]
         except AttributeError:
-            self.habitats = ["Swamp"]
+            self.habitats = ["Swamps"]

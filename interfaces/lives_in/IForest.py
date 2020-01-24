@@ -2,6 +2,6 @@
 
 class IForest:
     def __init__(self):
-        self.habitats += ["Forest"]
+        self.habitats += ["Forests"]
         except AttributeError:
-            self.habitats = ["Forest"]
+            self.habitats = ["Forests"]
