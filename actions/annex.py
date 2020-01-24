@@ -34,5 +34,3 @@ def annex_habitat(arboretum):
     if choice == "6":
         coastline = Coastline(name)
         arboretum.biomes["Coastlines"].append(coastline)
-    if choice != "7":
-        pass
