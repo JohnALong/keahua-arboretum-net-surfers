@@ -5,8 +5,8 @@ def build_facility_report(arboretum):
         for biome in arboretum.biomes[biome_list]:
             print (biome, ":")
             print("")
-            for animal in biome:
-                
+            for animal in biome.animals:
+                print(animal.name, f"Id: {animal.id}")
  
     input("\n\nPress any key to continue...")
  
