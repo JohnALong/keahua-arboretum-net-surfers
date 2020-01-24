@@ -23,7 +23,6 @@ def release_animal(arboretum):
 
     if choice == "1":
         animal = GoldDustDayGecko()
-        biome_options = []
 
     if choice == "2":
         animal = RiverDolphin()
@@ -46,28 +45,34 @@ def release_animal(arboretum):
     if choice == "8":
         animal = HawaiianHappyfaceSpider()
 
+    # setup dict and display ONLY biomes that the animal choice can go in based on requirements
+    choice_dict = dict()
     for index, habitat in enumerate(animal.habitats):
         print(f'{index + 1}. {habitat}')
+        choice_dict[index] = habitat
 
-    
-    # for index, river in enumerate(arboretum.rivers):
-    #     print(f'{index + 1}. River {river.id}')
-
+    # user selects biome type
     print(f'Select a biome type to release the {animal.species} into.')
     choice = input("> ")
+    selected_biome = choice_dict[int(choice) - 1]
 
-    for index, biome in enumerate(arboretum.biomes[choice]):
-        if len(arboretum.biomes[choice]) == 0:
-            print(f'No {choice} in your arboretum yet.')
-            input("\n\nPress any key to return to main menu...")
-            return
+    # 
+    if len(arboretum.biomes[selected_biome]) == 0:
+        print(f'No {selected_biome} in your arboretum yet.')
+        input("\n\nPress any key to return to main menu...")
+        return
+
+    # targets specific previously created biome list in arboretum
+    for index, biome in enumerate(arboretum.biomes[selected_biome]):
         print(f'{index + 1}. {biome.name}')
 
-    print(f'Select the specific {choice[:-1]} to release the animal!')
-    new_home = input("> ")
+    print(f'Select the specific {selected_biome[:-1]} to release the animal!')
+    choice = input("> ")
+    new_home = int(choice) - 1
 
-    arboretum.biomes[choice][new_home].append(animal)
-
-    # arboretum.rivers[int(choice) - 1].animals.append(animal)
-
+    arboretum.biomes[selected_biome][new_home].animals.append(animal)
+    for animal in arboretum.biomes[selected_biome][new_home].animals:
+        print(animal.species)
+    
+    input('Wait...')
 
