@@ -18,4 +18,3 @@ from interfaces.lives_in import IGrassland
 from interfaces.lives_in import IMountain
 from interfaces.lives_in import IRiver
 from interfaces.lives_in import ISwamp
-
