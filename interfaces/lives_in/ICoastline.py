@@ -2,4 +2,6 @@
 
 class ICoastline:
     def __init__(self):
-        self.lives_in_coastline = True
+        self.habitats += ["Coastline"]
+        except AttributeError:
+            self.habitats = ["Coastline"]

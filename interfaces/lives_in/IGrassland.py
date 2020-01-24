@@ -2,4 +2,6 @@
 
 class IGrassland:
     def __init__(self):
-        self.lives_in_grassland = True
+        self.habitats += ["Grassland"]
+        except AttributeError:
+            self.habitats = ["Grassland"]
