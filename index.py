@@ -47,7 +47,6 @@ def main_menu():
 
 
 main_menu()
-print(keahua.forests)
 
 print(keahua.grasslands)
 
