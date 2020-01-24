@@ -18,10 +18,10 @@ def annex_habitat(arboretum):
 
     if choice == "1":
         mountain = Mountain()
-        arboretum.mountains.append(mountain)
+        arboretum.biomes["mountains"].append(mountain)
     if choice == "2":
         swamp = Swamp()
-        arboretum.swamps.append(swamp)
+        arboretum.biomes["swamps"].append(swamp)
     if choice == "3":
         grassland = Grassland()
         arboretum.grasslands.append(grassland)
