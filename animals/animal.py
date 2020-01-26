@@ -9,3 +9,10 @@ class Animal:
 
     def move(self, propulsion, speed):
         return f"{self. species} moves at {speed} meters/sec by {propulsion}"
+
+    #feed animal function
+    def new_feed(self, selected_meal):
+        if selected_meal in self.diet:
+            return (f'The {self.species} ate {selected_meal} for lunch')
+        else:
+            print(f'The {self.species} rejects the {selected_meal}')
