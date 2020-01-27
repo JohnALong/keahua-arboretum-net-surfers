@@ -51,7 +51,7 @@ def redo_feed_animal(arboretum):
 
     try:
         biome_type = select_dict[int(choice) -1]
-    except (KeyError, ValueError):
+    except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
 
@@ -63,19 +63,30 @@ def redo_feed_animal(arboretum):
 
     try:
         this_biome = arboretum.biomes[biome_type][int(choice) - 1]
-        # print({this_biome})
-    except (KeyError, ValueError):
+    except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
+    #print showing whether animals is empty or not
+    # print(f'test {arboretum.biomes[biome_type][int(choice) - 1].animals}')
+    if len(arboretum.biomes[biome_type][int(choice) - 1].animals) > 0:
+        for index, animal in enumerate(this_biome.animals):
+            print(f'{index + 1}. {animal.species}')
 
-    for index, animal in enumerate(this_biome.animals):
-        print(f'{index + 1}. {animal.species}')
+    else:
+        input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
+        return
 
     print(f'Which {animal.species} would you like to feed?')
     choice = input("> ")
 
+
     fed_animal = ""
-    fed_animal = this_biome.animals[int(choice) -1]
+    try:
+        fed_animal = this_biome.animals[int(choice) -1]
+
+    except (KeyError, ValueError, IndexError):
+        input("Invalid input.  Return to main menu")
+        return
 
     # calling food menu
     for index, diet in enumerate(animal.diet):
@@ -85,8 +96,11 @@ def redo_feed_animal(arboretum):
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    selected_meal = animal.diet[int(food_choice) - 1]
-
+    try:
+        selected_meal = animal.diet[int(food_choice) - 1]
+    except (KeyError, ValueError, IndexError):
+        input("Invalid input.  Return to main menu")
+        return
     print(fed_animal.new_feed(selected_meal))
     input('\n\nPress any key to return to the main menu...')
 
