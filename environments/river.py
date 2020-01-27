@@ -8,7 +8,7 @@ from environments import Biome
 class River(Biome):
 
     def __init__(self, name):
-        Biome.__init__(self, f"{name} River")
+        Biome.__init__(self, f"{name} River", 6, 12)
 
     def add_animal(self, animal):
         try:
