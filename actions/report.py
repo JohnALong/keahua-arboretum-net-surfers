@@ -39,6 +39,8 @@ def build_single_report(arboretum):
     print(index_dict)
     choice = input("Enter the letter and number corresponding to your choice.")
     index_info = index_dict[choice]
+    biome = arboretum.biomes[index_info[0]][index_info[1]]
+    print(biome)
     # chosen_biome = arboretum.biomes[]
 
 
