@@ -8,7 +8,7 @@ from environments import Biome
 
 class Swamp(Biome):
     def __init__(self, name):
-        Biome.__init__(self, f"{name} Swamp")
+        Biome.__init__(self, f"{name} Swamp", 12, 8)
       
 
     def animal_count(self):
