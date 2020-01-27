@@ -6,11 +6,14 @@ from actions import feed_animal
 from actions.report import build_facility_report
 from actions.add_plant import add_plant
 
+from utilities import clear_screen
+
 keahua = Arboretum("Keahua Arboretum", "123 Paukauila Lane")
 
 
 def build_menu():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     print("1. Annex Habitat")
     print("2. Release Animal into Habitat")
     print("3. Feed Animal")
