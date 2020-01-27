@@ -32,16 +32,74 @@ def redo_feed_animal(arboretum):
         return
 
     # looping through existing biomes and animals
-    for biome_list in arboretum.biomes:
-        if len(arboretum.biomes[biome_list]) > 0:
-            print(biome_list)
+    select_dict = dict()
+    real_count = 0
+    habitats_count = 0
 
-            for biome in arboretum.biomes[biome_list]:
-                if len(biome.animals) > 0:
-                    print("test test")
 
-                    for animal in biome.animals:
-                        print(animal.species)
+    for index, biome_list in enumerate(arboretum.biomes):
+        if len(arboretum.biomes[biome_list]) == 0:
+            continue
+        else:
+            real_count += 1
+            habitats_count += 1
+            select_dict[real_count - 1] = biome_list
+            print(f'{real_count}. {biome_list}')
+
+    print(f'Select a biome to see animals to feed')
+    choice = input("> ")
+
+    try:
+        biome_type = select_dict[int(choice) -1]
+    except (KeyError, ValueError):
+        input("Invalid input.  Return to main menu")
+        return
+
+    for index, biome in enumerate(arboretum.biomes[biome_type]):
+        print(f'{index + 1}. {biome.name}')
+
+    print(f'Which {biome_type[:-1]} do you want to feed animals?')
+    choice = input("> ")
+
+    try:
+        this_biome = arboretum.biomes[select_dict[int(choice) -1]][int(choice) - 1]
+        print({this_biome})
+    except (KeyError, ValueError):
+        input("Invalid input.  Return to main menu")
+        return
+
+    for index, animal in enumerate(this_biome.animals):
+        print(f'{index + 1}. {animal.species}')
+
+    print(f'Which {animal.species} would you like to feed?')
+    choice = input("> ")
+
+    fed_animal = ""
+    fed_animal = this_biome.animals[int(choice) -1]
+
+    # calling food menu
+    for index, diet in enumerate(animal.diet):
+        print(f'{index + 1}. {diet}')
+
+    food_choice = input("Pick a meal >")
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    selected_meal = animal.diet[int(food_choice) - 1]
+
+    print(fed_animal.new_feed(selected_meal))
+    input('\n\nPress any key to return to the main menu...')
+    
+    
+
+
+           
+           
+            # for biome in arboretum.biomes[biome_list]:
+            #     if len(biome.animals) > 0:
+
+            #         for animal in biome.animals:
+            #             print(animal.species)
 
     # animal_eating = input("Who gets to eat today?\n>")
 
@@ -65,16 +123,3 @@ def redo_feed_animal(arboretum):
     # if habitats_count == 0:
     #     input("You must create a biome for that animal to live in first.  Press enter to return to the main menu and add one...")
     #     return
-    
-    animal = None
-
-    print("1. Gold Dust Day Gecko")
-    print("2. River Dolphin")
-    print("3. Nene Goose")
-    print("4. Kīkākapu")
-    print("5. Pueo")
-    print("6. 'Ulae")
-    print("7. Ope'ape'a")
-    print("8. Happy-Face Spider")
-
-    animal_eating = input("Who gets to eat today?\n>")
