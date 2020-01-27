@@ -77,7 +77,7 @@ def feed_animal(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
 
     selected_meal = animal.diet[int(food_choice) - 1]
-    input(animal.new_feed(selected_meal))
+    print(animal.new_feed(selected_meal))
     input('\n\nPress any key to return to main menu...')
 
 
