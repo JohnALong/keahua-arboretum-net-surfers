@@ -62,8 +62,8 @@ def redo_feed_animal(arboretum):
     choice = input("> ")
 
     try:
-        this_biome = arboretum.biomes[select_dict[int(choice) -1]][int(choice) - 1]
-        print({this_biome})
+        this_biome = arboretum.biomes[biome_type][int(choice) - 1]
+        # print({this_biome})
     except (KeyError, ValueError):
         input("Invalid input.  Return to main menu")
         return
