@@ -41,16 +41,23 @@ def build_single_report(arboretum):
             for index, biome in enumerate(arboretum.biomes[biome_type]):
                 print(f"{index_plus_one}. {biome}")
                 index_dict[f"{biome_type[:1]}{index_plus_one}"] = [biome_type, index]
-    
-    choice = input("Enter the letter and number corresponding to your choice: LetterNumber > ")
+    print("Q. Exit")
+    choice = input("Enter the letter and number corresponding to your choice in this format: LetterNumber > ")
+    exit_possible = choice.upper()
+    if exit_possible == "Q":
+        return
     try:
-        index_info = index_dict[choice]
+        letter_choice = choice[:1].upper()
+        number_choice = choice[1:2]
+        uppercase_choice = f"{letter_choice}{number_choice}"
+        index_info = index_dict[uppercase_choice]
         biome = arboretum.biomes[index_info[0]][index_info[1]]
     except KeyError:
         print("Invalid Entry")
         build_single_report(arboretum)
     print("Single Biome Report")
-    print(f"Name: {biome}")
+    print(f"--------------------")
+    print(f"Name: {biome.name}")
     print(f"-----------------------------")
     print_animals_and_plants(biome)
     print(f"-----------------------------")
@@ -63,14 +70,19 @@ def build_facility_report(arboretum):
     print("Would you like a full report, or a single biome report?")
     print("1. Full")
     print("2. Single")
+    print("Q. Exit")
 
     choice = input(" >>  ")
+    exit_possible = choice.upper()
 
     if choice == "1":
         build_full_report(arboretum)
     
     elif choice == "2":
         build_single_report(arboretum)
+
+    elif exit_possible == "Q":
+        return
 
     else:
         build_facility_report(arboretum)
