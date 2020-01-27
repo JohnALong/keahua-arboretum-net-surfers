@@ -55,15 +55,18 @@ def add_plant(arboretum):
 
     #Loop thru biomes of selected type unless all biomes are at max population
     for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
-        if len(biome.plants) >= max_plant_pops[chosen_habitat]:
-            print("All biomes of that type are at maximmum population.")
+        if len(biome.plants) >= biome.max_plants:
+            print("All biomes of that type are at maximmum population. Press any key to return to main menu.")
             input()
             return
         else:
-            print(f"{index + 1}. {biome.name} ({len(biome.plants)})")
+            print(f"{index + 1}. {biome.name} ({len(biome.plants)}) plant(s)")
 
     print()
     biome_choice = input("Choose your biome > ")
 
     #Add plant to selected biome
     arboretum.biomes[chosen_habitat][int(biome_choice) - 1].plants.append(plant)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"{plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}. Press any key to return to main menu.")
+    input()
