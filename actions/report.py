@@ -51,9 +51,9 @@ def build_single_report(arboretum):
         build_single_report(arboretum)
     print("Single Biome Report")
     print(f"Name: {biome}")
-    print(f"N-----------------------------")
+    print(f"-----------------------------")
     print_animals_and_plants(biome)
-    print(f"N-----------------------------")
+    print(f"-----------------------------")
     input("press any key to return to the main menu")
     
 
