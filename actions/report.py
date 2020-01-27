@@ -1,4 +1,18 @@
 
+
+def print_animals_and_plants(biome):
+    if len(biome.animals) > 0:
+        print("Animals: ")
+                    #loop through an individual biome's animals
+        for animal in biome.animals:
+            print(animal.species, f"Id: ({str(animal.id)[:8]})")
+                #check if there are any plants in a specific biome
+    if len(biome.plants) > 0:
+            print("Plants: ")
+            for plant in biome.plants:
+                print(plant.species, f"Id: ({str(plant.id)[:8]})")
+
+
 def build_full_report(arboretum):
     print("Keahua Arboretum:")
     print("-----------------")
@@ -12,16 +26,7 @@ def build_full_report(arboretum):
             for biome in arboretum.biomes[biome_list]:
                 print (biome, f"Id: [{str(biome.id)[:8]}]")
                 #check if there are any animals in a specific biome
-                if len(biome.animals) > 0:
-                    print("Animals: ")
-                    #loop through an individual biome's animals
-                    for animal in biome.animals:
-                        print(animal.species, f"Id: ({str(animal.id)[:8]})")
-                #check if there are any plants in a specific biome
-                if len(biome.plants) > 0:
-                    print("Plants: ")
-                    for plant in biome.plants:
-                        print(plant.species, f"Id: ({str(plant.id)[:8]})")
+                print_animals_and_plants(biome)
                 print("-----------")
             print("-------------------------------")
 
@@ -35,13 +40,22 @@ def build_single_report(arboretum):
             index_plus_one = 1
             for index, biome in enumerate(arboretum.biomes[biome_type]):
                 print(f"{index_plus_one}. {biome}")
-                index_dict[f"{biome_type[:1]},{index_plus_one}"] = [biome_type, index]
+                index_dict[f"{biome_type[:1]}{index_plus_one}"] = [biome_type, index]
     print(index_dict)
-    choice = input("Enter the letter and number corresponding to your choice.")
-    index_info = index_dict[choice]
-    biome = arboretum.biomes[index_info[0]][index_info[1]]
-    print(biome)
-    # chosen_biome = arboretum.biomes[]
+    choice = input("Enter the letter and number corresponding to your choice: LetterNumber > ")
+    try:
+        index_info = index_dict[choice]
+        biome = arboretum.biomes[index_info[0]][index_info[1]]
+    except KeyError:
+        print("Invalid Entry")
+        build_single_report(arboretum)
+    print("Single Biome Report")
+    print(f"Name: {biome}")
+    print(f"N-----------------------------")
+    print_animals_and_plants(biome)
+    print(f"N-----------------------------")
+    input("press any key to return to the main menu")
+    
 
 
 def build_facility_report(arboretum):
