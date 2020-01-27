@@ -9,8 +9,23 @@ from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
 
-def release_animal(arboretum):
+def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+    return
+
+def show_biome_animals(biome):
+    clear_screen()
+    
+    print(f'{biome.name} Animals')
+    print('-------------')
+    for animal in biome.animals:
+        print(animal.species)
+    
+    input('\n\nPress any key to return to main menu...')
+    return
+
+def release_animal(arboretum):
+    clear_screen()
     current_biome_count = 0
     for biome in arboretum.biomes:
         if len(arboretum.biomes[biome]) > 0:
@@ -66,7 +81,7 @@ def release_animal(arboretum):
         input('Invalid input... Return to main menu.')
         return
                 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     # setup dict and display ONLY biomes that the animal choice can go in based on requirements
     choice_dict = dict()
     actual_count = 0
@@ -97,7 +112,7 @@ def release_animal(arboretum):
         return
 
     # if valid choice, clear screen and proceed with selecting a biome
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
 
     # targets specific previously created biome list in arboretum
     for index, biome in enumerate(arboretum.biomes[biome_type]):
@@ -115,12 +130,6 @@ def release_animal(arboretum):
         return
         
     new_home.animals.append(animal)
+    show_biome_animals(new_home)
 
-    os.system('cls' if os.name == 'nt' else 'clear')
-    
-    print(f'{new_home.name} Animals')
-    print('-------------')
-    for animal in new_home.animals:
-        print(animal.species)
-    
-    input('\n\nPress any key to return to main menu...')
+    return
