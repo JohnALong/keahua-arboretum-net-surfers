@@ -31,9 +31,6 @@ def feed_animal(arboretum):
         input("You can't feed an imaginary animal.  Please return to the main menu and release some!")
         return
                     
-
-
-
     animal = None
 
     print("1. Gold Dust Day Gecko")
@@ -46,6 +43,9 @@ def feed_animal(arboretum):
     print("8. Happy-Face Spider")
 
     animal_eating = input("Who gets to eat today?\n>")
+
+
+
 
     if animal_eating == "1":
         animal = GoldDustDayGecko()
@@ -82,6 +82,7 @@ def feed_animal(arboretum):
             habitats_count += 1
             selected_dict[my_count - 1] = habitat
             print(f'{my_count}. {habitat}')
+            input("wait")
 
     if habitats_count == 0:
         input("You must create a biome for that animal to live in first.  Press enter to return to the main menu and add one...")
