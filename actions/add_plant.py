@@ -43,7 +43,11 @@ def add_plant(arboretum):
     habitat_choice = input("Choose your habitat type > ")
 
     #Set reference to chosen habitat
-    chosen_habitat = plant.habitats[int(habitat_choice) - 1]
+    try:
+        chosen_habitat = plant.habitats[int(habitat_choice) - 1]
+    except (IndexError, ValueError):
+        input("Invalid input. Returning to main.")
+        return
 
     #Print statement if no biomes of that type exist
     if len(arboretum.biomes[chosen_habitat]) == 0:
@@ -66,7 +70,12 @@ def add_plant(arboretum):
     biome_choice = input("Choose your biome > ")
 
     #Add plant to selected biome
-    arboretum.biomes[chosen_habitat][int(biome_choice) - 1].plants.append(plant)
+    try:
+        arboretum.biomes[chosen_habitat][int(biome_choice) - 1].plants.append(plant)
+    except (IndexError, ValueError):
+        input("Invalid input. Returning to main.")
+        return
+        
     os.system('cls' if os.name == 'nt' else 'clear')
     print(f"{plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}. Press any key to return to main menu.")
     input()
