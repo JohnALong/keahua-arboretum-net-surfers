@@ -89,37 +89,7 @@ def redo_feed_animal(arboretum):
 
     print(fed_animal.new_feed(selected_meal))
     input('\n\nPress any key to return to the main menu...')
-    
-    
-
-
-           
-           
-            # for biome in arboretum.biomes[biome_list]:
-            #     if len(biome.animals) > 0:
-
-            #         for animal in biome.animals:
-            #             print(animal.species)
-
-    # animal_eating = input("Who gets to eat today?\n>")
 
     
 
-    # selected_dict = dict()
-    # my_count = 0
-    # habitats_count = 0
-    # animals_count = 0
-
-    # for index, habitat in enumerate(animal.habitats):
-    #     if len(arboretum.biomes[habitat]) == 0:
-    #         continue
-    #     else:
-    #         my_count += 1
-    #         habitats_count += 1
-    #         selected_dict[my_count - 1] = habitat
-    #         print(f'{my_count}. {habitat} and {animal.species}')
-    #         input("steve")
-
-    # if habitats_count == 0:
-    #     input("You must create a biome for that animal to live in first.  Press enter to return to the main menu and add one...")
-    #     return
+ 
