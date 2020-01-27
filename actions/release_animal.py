@@ -123,7 +123,8 @@ def release_animal(arboretum):
 
     # targets specific previously created biome list in arboretum
     for index, biome in enumerate(arboretum.biomes[biome_type]):
-        print(f'{index + 1}. {biome.name}')
+        num_current_animals = len(biome.animals)
+        print(f'{index + 1}. {biome.name} [{num_current_animals} animal(s), {biome.max_animals - num_current_animals} remaining capacity]')
 
     print(f'Select the specific {biome_type[:-1]} to release the animal!')
     choice = input("> ")
@@ -136,7 +137,11 @@ def release_animal(arboretum):
         # release_animal(arboretum)
         return
         
-    new_home.animals.append(animal)
+    if len(new_home.animals) < new_home.max_animals:
+        new_home.animals.append(animal)
+    else:
+        input('no space for this animal...')
+
     show_biome_animals(new_home)
 
     return
