@@ -55,18 +55,17 @@ def release_animal(arboretum):
 
     elif choice == "7":
         animal = Opeapea()
-        print(animal)
 
     elif choice == "8":
         animal = HawaiianHappyfaceSpider()
 
-    elif choice.upper() != "Q":
-        input('Invalid input... Press any key to try again.')
-        release_animal(arboretum)
+    elif choice.upper() == "Q":
+        return
+
     else:
+        input('Invalid input... Return to main menu.')
         return
                 
-
     os.system('cls' if os.name == 'nt' else 'clear')
     # setup dict and display ONLY biomes that the animal choice can go in based on requirements
     choice_dict = dict()
@@ -93,8 +92,9 @@ def release_animal(arboretum):
     try:
         biome_type = choice_dict[int(choice) - 1]
     except (KeyError, ValueError):
-        input("Invalid input. Please try again")
-        release_animal(arboretum)
+        input("Invalid input. Return to main menu")
+        # release_animal(arboretum)
+        return
 
     # if valid choice, clear screen and proceed with selecting a biome
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -110,8 +110,9 @@ def release_animal(arboretum):
     try:
         new_home = arboretum.biomes[biome_type][int(choice) - 1]
     except (IndexError, ValueError):
-        input("Invalid input. Please try again")
-        release_animal(arboretum)
+        input("Invalid input. Return to main menu")
+        # release_animal(arboretum)
+        return
         
     new_home.animals.append(animal)
 
