@@ -41,7 +41,7 @@ def build_single_report(arboretum):
             for index, biome in enumerate(arboretum.biomes[biome_type]):
                 print(f"{index_plus_one}. {biome}")
                 index_dict[f"{biome_type[:1]}{index_plus_one}"] = [biome_type, index]
-    print(index_dict)
+    
     choice = input("Enter the letter and number corresponding to your choice: LetterNumber > ")
     try:
         index_info = index_dict[choice]
