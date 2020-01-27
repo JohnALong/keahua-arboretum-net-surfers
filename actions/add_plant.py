@@ -3,6 +3,7 @@ from plants import Rainbow_Eucalyptus_Tree
 from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
 
+max_pant_pops = {"Mountains": 4, "Grasslands": 15, "Rivers": 6, "Forests": 32, "Swamps": 12, "Coastlines": 3}
 
 def add_plant(arboretum):
     plant = None
@@ -38,8 +39,12 @@ def add_plant(arboretum):
         return
 
     for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
-
-        print(f"{index + 1}. {biome.name}")
+        if len(biome.plants) >= max_pant_pops[chosen_habitat]:
+            print("All biomes of that type are at maximmum population.")
+            input()
+            return
+        else:
+            print(f"{index + 1}. {biome.name} ({len(biome.plants)})")
 
     # for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
 

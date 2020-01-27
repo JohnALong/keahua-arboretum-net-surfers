@@ -12,4 +12,4 @@ class Biome(IContainsAnimals, IContainsPlants, Identifiable):
         
 
     def __str__(self):
-        return f"Name is: {self.name}, Animals are: {self.animals} Plants are: {self.plants}"
+        return self.name
