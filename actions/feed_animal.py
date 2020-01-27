@@ -16,23 +16,22 @@ def feed_animal(arboretum):
     for biome in arboretum.biomes:
         if len(arboretum.biomes[biome]) > 0:
             biome_exist += 1
+            for this in arboretum.biomes[biome]:
+                for animal in this.animals:
+                    # print(animal.species, len(this.animals), "test")
+                    if len(this.animals) > 0:
+                        animal_exist += 1
+
+                    
+                    
 
     if biome_exist == 0:
-            input("I think you're lost.  This is still the parking lot.  Please return to the main menu and create a biome.")
-            return
-
-    for biome in arboretum.biomes[biome]:
-        print(biome)
-        for animal in biome.animals[animal]:
-            if len(biome.animals) > 0:
-                animal_exist += 1
+        input("I think you're lost.  This is still the parking lot.  Please return to the main menu and create a biome.")
+        return
 
     if animal_exist == 0:
         input("You can't feed an imaginary animal.  Please return to the main menu and release some!")
         return
-
-        # for animal in biome.animals:
-        #     print(animal.species)
 
     animal = None
 
