@@ -8,6 +8,7 @@ from animals import Opeapea
 from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
+from actions import annex_habitat
 
 def feed_animal(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -22,16 +23,16 @@ def feed_animal(arboretum):
                     if len(this.animals) > 0:
                         animal_exist += 1
 
-                    
-                    
-
     if biome_exist == 0:
         input("I think you're lost.  This is still the parking lot.  Please return to the main menu and create a biome.")
         return
-
+                    
     if animal_exist == 0:
         input("You can't feed an imaginary animal.  Please return to the main menu and release some!")
         return
+                    
+
+
 
     animal = None
 
@@ -45,8 +46,6 @@ def feed_animal(arboretum):
     print("8. Happy-Face Spider")
 
     animal_eating = input("Who gets to eat today?\n>")
-
-    os.system('cls' if os.name == 'nt' else 'clear')
 
     if animal_eating == "1":
         animal = GoldDustDayGecko()
@@ -66,6 +65,8 @@ def feed_animal(arboretum):
         animal = HawaiianHappyfaceSpider()
     if animal_eating != "9":
         pass
+
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     for index, diet in enumerate(animal.diet):
         print(f'{index + 1}. {diet}')

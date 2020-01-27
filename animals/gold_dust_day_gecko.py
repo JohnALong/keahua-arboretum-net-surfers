@@ -6,4 +6,4 @@ class GoldDustDayGecko(Animal, IForest, IEatInsects):
     def __init__(self):
         Animal.__init__(self, "Gold Dust Day Gecko")
         IForest.__init__(self)
-        IEatInsects.__init_(self)
+        IEatInsects.__init__(self)
