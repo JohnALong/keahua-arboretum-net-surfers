@@ -22,10 +22,9 @@ def add_plant(arboretum):
         plant = Rainbow_Eucalyptus_Tree()
     if plant_choice == "4":
         plant = Blue_Jade_Vine()
-    else:
-        return
+    if plant_choice != "5":
+        pass
 
-    #Loop to print available habitat types
     for index, habitat in enumerate(plant.habitats):
         print(f"{index + 1}. {habitat}")
 
@@ -33,7 +32,6 @@ def add_plant(arboretum):
 
     chosen_habitat = plant.habitats[int(habitat_choice) - 1]
 
-    #Conditional and loop to print biomes in chosen habitat
     if len(arboretum.biomes[chosen_habitat]) == 0:
         print("No biomes of that type exist. Return to main menu.")
         input()
@@ -41,14 +39,15 @@ def add_plant(arboretum):
 
     for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
 
-        print(f"{index + 1}. {biome.name}  ({len(biome.plants)} plants)")
+        print(f"{index + 1}. {biome.name}")
+
+    # for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
+
+    #     print(f"{index + 1 }. {biome.name}")
 
     biome_choice = input("Choose your biome > ")
 
-    #appendeds plant to choses biome
     arboretum.biomes[chosen_habitat][int(biome_choice) - 1].plants.append(plant)
-
-    #Old Code:
 
     # for index, river in enumerate(arboretum.rivers):
     #     print(f'{index + 1}. River {river.id}')
