@@ -21,7 +21,7 @@ def show_biome_animals(biome):
     for animal in biome.animals:
         print(animal.species)
     
-    input('\n\nPress any key to return to main menu...')
+    input('\n\nPress any key to return to main menu.')
     return
 
 def check_for_biomes(arboretum):
@@ -31,7 +31,7 @@ def check_for_biomes(arboretum):
             biomes_present = True
 
     if not biomes_present:
-        input('No biomes created. Press any key to return to main menu to add one...')
+        input('No biomes created. Press any key to return to main menu to add one.')
     
     return biomes_present
 
@@ -85,7 +85,7 @@ def release_animal(arboretum):
         return
 
     else:
-        input('Invalid input... Return to main menu.')
+        input('Invalid input. Return to main menu.')
         return
                 
     clear_screen()
@@ -104,7 +104,7 @@ def release_animal(arboretum):
 
     # user selects biome type
     if habitats_count == 0:
-        input('No biomes created that this animal can live in.\nPress any key and [Enter] to return to main menu to add one...')
+        input('No biomes created that this animal can live in.\nPress any key and [Enter] to return to main menu to add one.')
         return
 
     print(f'Select a biome type to release the {animal.species} into.')
@@ -114,7 +114,7 @@ def release_animal(arboretum):
     try:
         biome_type = choice_dict[int(choice) - 1]
     except (KeyError, ValueError):
-        input("Invalid input. Return to main menu")
+        input("Invalid input. Return to main menu.")
         # release_animal(arboretum)
         return
 
@@ -133,14 +133,14 @@ def release_animal(arboretum):
     try:
         new_home = arboretum.biomes[biome_type][int(choice) - 1]
     except (IndexError, ValueError):
-        input("Invalid input. Return to main menu")
+        input("Invalid input. Return to main menu.")
         # release_animal(arboretum)
         return
         
     if len(new_home.animals) < new_home.max_animals:
         new_home.animals.append(animal)
     else:
-        input('no space for this animal...')
+        input('No space for this animal. Press any key to show all the animals in this biome.')
 
     show_biome_animals(new_home)
 
