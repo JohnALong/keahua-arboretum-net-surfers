@@ -14,12 +14,13 @@ def feed_animal(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
     biome_exist = 0
     animal_exist = 0
+    # check for existing biomes
     for biome in arboretum.biomes:
         if len(arboretum.biomes[biome]) > 0:
             biome_exist += 1
+            # check for existing animals
             for this in arboretum.biomes[biome]:
                 for animal in this.animals:
-                    # print(animal.species, len(this.animals), "test")
                     if len(this.animals) > 0:
                         animal_exist += 1
 
