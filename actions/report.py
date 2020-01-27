@@ -1,4 +1,4 @@
-
+import os
 
 def print_animals_and_plants(biome):
     if len(biome.animals) > 0:
@@ -30,7 +30,9 @@ def build_full_report(arboretum):
                 print("-----------")
             print("-------------------------------")
 
-    input("\n\nPress any key to continue...")
+    input("\n\nPress enter to return to main menu....")
+    return
+
 
 def build_single_report(arboretum):
     index_dict = dict()
@@ -54,19 +56,22 @@ def build_single_report(arboretum):
         biome = arboretum.biomes[index_info[0]][index_info[1]]
     except KeyError:
         print("Invalid Entry")
+        os.system('cls' if os.name == 'nt' else 'clear')
         build_single_report(arboretum)
+        return
     print("Single Biome Report")
     print(f"--------------------")
     print(f"Name: {biome.name}")
     print(f"-----------------------------")
     print_animals_and_plants(biome)
     print(f"-----------------------------")
-    input("press any key to return to the main menu")
+    input("press enter to return to the main menu")
+    return
     
 
 
 def build_facility_report(arboretum):
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     print("Would you like a full report, or a single biome report?")
     print("1. Full")
     print("2. Single")
@@ -85,4 +90,5 @@ def build_facility_report(arboretum):
         return
 
     else:
+        os.system('cls' if os.name == 'nt' else 'clear')
         build_facility_report(arboretum)
