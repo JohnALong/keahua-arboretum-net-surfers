@@ -1,5 +1,3 @@
-import os
-
 from animals import RiverDolphin
 from animals import GoldDustDayGecko
 from animals import HawaiianHappyfaceSpider
@@ -9,9 +7,7 @@ from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    return
+from utilities import clear_screen
 
 def show_biome_animals(biome):
     clear_screen()
