@@ -64,7 +64,7 @@ def add_plant(arboretum):
             input()
             return
         else:
-            print(f"{index + 1}. {biome.name} ({len(biome.plants)}) plant(s)")
+            print(f"{index + 1}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
 
     print()
     biome_choice = input("Choose your biome > ")
