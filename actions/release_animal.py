@@ -24,15 +24,22 @@ def show_biome_animals(biome):
     input('\n\nPress any key to return to main menu...')
     return
 
-def release_animal(arboretum):
-    clear_screen()
-    current_biome_count = 0
+def check_for_biomes(arboretum):
+    biomes_present = False
     for biome in arboretum.biomes:
         if len(arboretum.biomes[biome]) > 0:
-            current_biome_count += 1
+            biomes_present = True
 
-    if current_biome_count == 0:
+    if not biomes_present:
         input('No biomes created. Press any key to return to main menu to add one...')
+    
+    return biomes_present
+
+def release_animal(arboretum):
+    clear_screen()
+
+    biomes_exist = check_for_biomes(arboretum)
+    if not biomes_exist:
         return
 
     animal = None
