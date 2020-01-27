@@ -2,4 +2,4 @@ from environments import Biome
 
 class Grassland(Biome):
     def __init__(self, name):
-        Biome.__init__(self, f"{name} Grassland")
+        Biome.__init__(self, f"{name} Grassland", 15, 22)
