@@ -80,7 +80,7 @@ def redo_feed_animal(arboretum):
         input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
         return
 
-    print(f'Which {animal.species} would you like to feed?')
+    print(f'Which would you like to feed?')
     choice = input("> ")
     if not choice.isdigit() or int(choice) <= 0:
         input("Values less than 1 can not be selected and can not be letters")
@@ -105,7 +105,7 @@ def redo_feed_animal(arboretum):
     if not food_choice.isdigit() or int(food_choice) <= 0:
         input("Values less than 1 can not be selected and can not be letters")
         return
-        
+
     try:
         selected_meal = animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
