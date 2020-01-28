@@ -61,9 +61,10 @@ def redo_feed_animal(arboretum):
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
     # ensure valid selection number
-    if int(choice) <= 0:
-        input("Values less than 1 can not be selected")
+    if not choice.isdigit() or int(choice) <= 0:
+        input("Values less than 1 can not be selected and can not be letters")
         return
+    
     try:
         this_biome = arboretum.biomes[biome_type][int(choice) - 1]
     except (KeyError, ValueError, IndexError):
@@ -81,10 +82,10 @@ def redo_feed_animal(arboretum):
 
     print(f'Which {animal.species} would you like to feed?')
     choice = input("> ")
-
-    if int(choice) <= 0:
-        input("Values less than 0 can not be selected.")
+    if not choice.isdigit() or int(choice) <= 0:
+        input("Values less than 1 can not be selected and can not be letters")
         return
+
     fed_animal = ""
     try:
         fed_animal = this_biome.animals[int(choice) -1]
@@ -100,9 +101,11 @@ def redo_feed_animal(arboretum):
     food_choice = input("Pick a meal >")
 
     os.system('cls' if os.name == 'nt' else 'clear')
-    if int(food_choice) <= 0:
-        input("Values less than 1 can not be selected")
+
+    if not food_choice.isdigit() or int(food_choice) <= 0:
+        input("Values less than 1 can not be selected and can not be letters")
         return
+        
     try:
         selected_meal = animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
