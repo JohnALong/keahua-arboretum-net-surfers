@@ -29,7 +29,7 @@ def build_full_report(arboretum):
                 print_animals_and_plants(biome)
                 print("-----------")
             print("-------------------------------")
-
+    os.system('say here is your report')
     input("\n\nPress enter to return to main menu....")
     return
 

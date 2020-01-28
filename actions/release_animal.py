@@ -6,6 +6,7 @@ from animals import Opeapea
 from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
+import os
 
 from utilities import clear_screen
 
@@ -144,6 +145,7 @@ def release_animal(arboretum):
         
     if len(new_home.animals) < new_home.max_animals:
         new_home.animals.append(animal)
+        os.system(f'say you just added a {animal.species} to your {new_home.name}')
     else:
         input('No space for this animal. Press any key to show all the animals in this biome.')
 

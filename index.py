@@ -12,7 +12,7 @@ from utilities import clear_screen
 
 keahua = Arboretum("Keahua Arboretum", "123 Paukauila Lane")
 
-
+os.system('say welcome to Keahua Arboretum')
 def build_menu():
     # os.system('cls' if os.name == 'nt' else 'clear')
     clear_screen()
