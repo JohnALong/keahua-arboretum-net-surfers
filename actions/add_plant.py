@@ -3,6 +3,7 @@ from plants import Rainbow_Eucalyptus_Tree
 from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
 from utilities import clear_screen
+import os
 
 #Set max populations for biomes
 max_plant_pops = {"Mountains": 4, "Grasslands": 15, "Rivers": 6, "Forests": 32, "Swamps": 12, "Coastlines": 3}
