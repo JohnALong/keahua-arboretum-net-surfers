@@ -19,18 +19,24 @@ def annex_habitat(arboretum):
     if choice == "1":
         mountain = Mountain(name)
         arboretum.biomes["Mountains"].append(mountain)
+        os.system(f'say you have annexed {name} Mountain!')
     if choice == "2":
         swamp = Swamp(name)
         arboretum.biomes["Swamps"].append(swamp)
+        os.system(f'say you have annexed {name} Swamp!')
     if choice == "3":
         grassland = Grassland(name)
         arboretum.biomes["Grasslands"].append(grassland)
+        os.system(f'say you have annexed {name} grassland!')
     if choice == "4":
         forest = Forest(name)
         arboretum.biomes["Forests"].append(forest)
+        os.system(f'say you have annexed {name} forest!')
     if choice == "5":
         river = River(name)
         arboretum.biomes["Rivers"].append(river)
+        os.system(f'say you have annexed {name} river!')
     if choice == "6":
         coastline = Coastline(name)
         arboretum.biomes["Coastlines"].append(coastline)
+        os.system(f'say you have annexed {name} coastline!')
