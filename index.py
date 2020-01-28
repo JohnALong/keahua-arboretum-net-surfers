@@ -2,7 +2,6 @@ import os
 from arboretum import Arboretum
 from actions import annex_habitat
 from actions import release_animal
-from actions import feed_animal
 # redo of feed animal to call by using function 
 from actions import redo_feed_animal
 from actions.report import build_facility_report
