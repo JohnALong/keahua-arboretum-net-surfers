@@ -78,7 +78,7 @@ def redo_feed_animal(arboretum):
     # print(f'test {arboretum.biomes[biome_type][int(choice) - 1].animals}')
     if len(arboretum.biomes[biome_type][int(choice) - 1].animals) > 0:
         for index, animal in enumerate(this_biome.animals):
-            print(f'{index + 1}. {animal.species}')
+            print(f'{index + 1}. {animal.species} Id:({str(animal.id)[:8]})')
 
     else:
         input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
