@@ -8,7 +8,10 @@ from animals import Kikakapu
 from animals import Pueo
 
 from utilities import clear_screen
+from utilities import print_header
+from utilities import menu_wrapper
 
+@menu_wrapper
 def show_biome_animals(biome):
     clear_screen()
     
