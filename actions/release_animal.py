@@ -43,7 +43,7 @@ def release_animal(arboretum):
     print('1. Gold Dust Day Gecko')
     print('2. River Dolphin')
     print('3. Nene Goose')
-    print('4. Kīkākapu)
+    print('4. Kīkākapu')
     # print('4. Kikakapu')
     print("5. Pueo")
     print("6. 'Ulae")
