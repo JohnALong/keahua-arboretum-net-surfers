@@ -69,15 +69,16 @@ def redo_feed_animal(arboretum):
     #print showing whether animals is empty or not
     # print(f'test {arboretum.biomes[biome_type][int(choice) - 1].animals}')
     if len(arboretum.biomes[biome_type][int(choice) - 1].animals) > 0:
-        for index, animal in enumerate(this_biome.animals):
-            print(f'{index + 1}. {animal.species}')
+        for index, animal_list in enumerate(this_biome.animals):
+            print(f'{index + 1}. {animal_list.species}')
 
     else:
         input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
         return
 
-    print(f'Which {animal.species} would you like to feed?')
+    print(f'Which animal would you like to feed?')
     choice = input("> ")
+
 
 
     fed_animal = ""
@@ -89,7 +90,7 @@ def redo_feed_animal(arboretum):
         return
 
     # calling food menu
-    for index, diet in enumerate(animal.diet):
+    for index, diet in enumerate(fed_animal.diet):
         print(f'{index + 1}. {diet}')
 
     food_choice = input("Pick a meal >")
