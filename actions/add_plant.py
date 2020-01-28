@@ -84,7 +84,6 @@ def add_plant(arboretum):
         return
 
     print()
-    print(bad_choices)
     biome_choice = input("Choose your biome > ")
 
     
