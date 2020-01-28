@@ -61,6 +61,9 @@ def redo_feed_animal(arboretum):
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
     # ensure valid selection number
+    if int(choice) <= 0:
+        input("Values less than 1 can not be selected")
+        return
     try:
         this_biome = arboretum.biomes[biome_type][int(choice) - 1]
     except (KeyError, ValueError, IndexError):
@@ -69,18 +72,19 @@ def redo_feed_animal(arboretum):
     #print showing whether animals is empty or not
     # print(f'test {arboretum.biomes[biome_type][int(choice) - 1].animals}')
     if len(arboretum.biomes[biome_type][int(choice) - 1].animals) > 0:
-        for index, animal_list in enumerate(this_biome.animals):
-            print(f'{index + 1}. {animal_list.species}')
+        for index, animal in enumerate(this_biome.animals):
+            print(f'{index + 1}. {animal.species}')
 
     else:
         input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
         return
 
-    print(f'Which animal would you like to feed?')
+    print(f'Which {animal.species} would you like to feed?')
     choice = input("> ")
 
-
-
+    if int(choice) <= 0:
+        input("Values less than 0 can not be selected.")
+        return
     fed_animal = ""
     try:
         fed_animal = this_biome.animals[int(choice) -1]
@@ -90,15 +94,17 @@ def redo_feed_animal(arboretum):
         return
 
     # calling food menu
-    for index, diet in enumerate(fed_animal.diet):
+    for index, diet in enumerate(animal.diet):
         print(f'{index + 1}. {diet}')
 
     food_choice = input("Pick a meal >")
 
     os.system('cls' if os.name == 'nt' else 'clear')
-
+    if int(food_choice) <= 0:
+        input("Values less than 1 can not be selected")
+        return
     try:
-        selected_meal = fed_animal.diet[int(food_choice) - 1]
+        selected_meal = animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
