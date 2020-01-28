@@ -98,7 +98,7 @@ def redo_feed_animal(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
 
     try:
-        selected_meal = animal.diet[int(food_choice) - 1]
+        selected_meal = fed_animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
