@@ -118,10 +118,9 @@ def redo_feed_animal(arboretum):
         input("Invalid input.  Return to main menu")
         return
     
-    for x in range(1):
-        random_value = random.randint(1,20)
+    random_value = random.randint(1, 20)
  
-    if random_value >= 4:
+    if random_value > 4:
         print(fed_animal.new_feed(selected_meal))
     else:
         print(fed_animal.no_thank_you(selected_meal))
