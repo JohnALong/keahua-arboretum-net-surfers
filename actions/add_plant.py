@@ -57,16 +57,38 @@ def add_plant(arboretum):
     clear_screen()
 
     #Loop thru biomes of selected type unless all biomes are at max population
+    open_biomes = 0
+    biome_loop_counter = 0
+    biome_loops = len(arboretum.biomes[chosen_habitat])
+    bad_choices = ["bad choices"]
+
     for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
+
+        biome_loop_counter += 1
+
+        if len(biome.plants) < biome.max_plants:
+            open_biomes += 1
+            print(f"{open_biomes}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
         if len(biome.plants) >= biome.max_plants:
-            print("All biomes of that type are at maximmum population. Press any key to return to main menu.")
-            input()
-            return
-        else:
-            print(f"{index + 1}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
+            open_biomes += 1
+            bad_choices.append(open_biomes)
+            print(f"{open_biomes}. THIS BIOME UNAVAILABLE. PLEASE DO NOT PRESS CORESSPONDING NUMBER BUTTON.")
+
+            
+
+    if open_biomes == 0 and biome_loop_counter == biome_loops:
+        print("All biomes of that type are at maximmum population. Press any key to return to main menu.")
+        input()
+        return
 
     print()
+    print(bad_choices)
     biome_choice = input("Choose your biome > ")
+
+    
+    if int(biome_choice) in bad_choices:
+        input("Told you not to press the button. Now you gotta go to the main menu lol.")
+        return
 
     #Add plant to selected biome
     try:
