@@ -2,14 +2,14 @@ from plants import Silversword
 from plants import Rainbow_Eucalyptus_Tree
 from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
-import os
+from utilities import clear_screen
 
 #Set max populations for biomes
 max_plant_pops = {"Mountains": 4, "Grasslands": 15, "Rivers": 6, "Forests": 32, "Swamps": 12, "Coastlines": 3}
 
 #Function to add plant to biome
 def add_plant(arboretum):
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
 
     plant = None
 
@@ -33,8 +33,7 @@ def add_plant(arboretum):
         input()
         return
 
-    os.system('cls' if os.name == 'nt' else 'clear')
-
+    clear_screen()
     #Loop over available biome types for selected plant
     for index, habitat in enumerate(plant.habitats):
         print(f"{index + 1}. {habitat}")
@@ -55,19 +54,43 @@ def add_plant(arboretum):
         input()
         return
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
 
     #Loop thru biomes of selected type unless all biomes are at max population
+    open_biomes = False
+    num_biomes = 0
+    biome_loop_counter = 0
+    biome_loops = len(arboretum.biomes[chosen_habitat])
+    bad_choices = ["bad choices"]
+
     for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
+
+        biome_loop_counter += 1
+
+        if len(biome.plants) < biome.max_plants:
+            open_biomes = True
+            num_biomes += 1
+            print(f"{num_biomes}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
         if len(biome.plants) >= biome.max_plants:
-            print("All biomes of that type are at maximum population. Press any key to return to main menu.")
-            input()
-            return
-        else:
-            print(f"{index + 1}. {biome.name} ({len(biome.plants)}) plant(s)")
+            num_biomes += 1
+            bad_choices.append(num_biomes)
+            print(f"{num_biomes}. THIS BIOME UNAVAILABLE. PLEASE DO NOT PRESS CORRESPONDING NUMBER BUTTON.")
+
+            
+
+    if open_biomes == False and biome_loop_counter == biome_loops:
+        print()
+        print("All biomes of that type are at maximum population. Press any key to return to main menu.")
+        input()
+        return
 
     print()
     biome_choice = input("Choose your biome > ")
+
+    
+    if int(biome_choice) in bad_choices:
+        input("Told you not to press the button. Now you gotta go to the main menu lol.")
+        return
 
     #Add plant to selected biome
     try:
@@ -76,7 +99,7 @@ def add_plant(arboretum):
         input("Invalid input. Returning to main.")
         return
         
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     print(f"{plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}. Press any key to return to main menu.")
     os.system(f'say {plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}')
     input()

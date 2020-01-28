@@ -21,6 +21,9 @@ class RiverDolphin(Animal, IRiver, ICoastline, IEatFish):
         else:
             print(f'The dolphin rejects the {prey}')
 
+    def no_thank_you(self, selected_meal):
+        return (f'The {self.species} is now a vegetarian.  The {selected_meal} and the {self.species} would LOVE some asparagus')
+
 
     def __str__(self):
         return f'Dolphin {self.id}. Eeee EeeEEeeeeEE!'
