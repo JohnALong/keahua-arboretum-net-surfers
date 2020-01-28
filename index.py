@@ -3,6 +3,8 @@ from arboretum import Arboretum
 from actions import annex_habitat
 from actions import release_animal
 from actions import feed_animal
+# redo of feed animal to call by using function 
+from actions import redo_feed_animal
 from actions.report import build_facility_report
 from actions.add_plant import add_plant
 
@@ -37,7 +39,7 @@ def main_menu():
         release_animal(keahua)
 
     if choice == "3":
-        feed_animal(keahua)
+        redo_feed_animal(keahua)
 
     if choice == "4":
         add_plant(keahua)
