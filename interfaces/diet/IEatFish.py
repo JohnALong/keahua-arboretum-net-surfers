@@ -3,6 +3,6 @@
 class IEatFish:
     def __init__(self):
         try:
-            self.diet += ["Trout", "Mackarel", "Salmon", "Sardine"]
+            self.diet += ["trout", "mackarel", "salmon", "sardines"]
         except AttributeError:
-            self.diet = ["Trout", "Mackarel", "Salmon", "Sardine"]
+            self.diet = ["trout", "mackarel", "salmon", "sardines"]
