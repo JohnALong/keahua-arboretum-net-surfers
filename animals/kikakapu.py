@@ -8,3 +8,6 @@ class Kikakapu(Animal, ISwamp, IRiver, IEatFish):
         ISwamp.__init__(self)
         IRiver.__init__(self)
         IEatFish.__init__(self)
+
+    def no_thank_you(self, selected_meal):
+        return (f'The {self.species} has become a zombie.  The {selected_meal} is ignored and the {self.species} shambles your way')

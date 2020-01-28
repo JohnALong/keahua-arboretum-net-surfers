@@ -16,3 +16,6 @@ class Animal:
             return (f'The {self.species} ate {selected_meal} for lunch')
         else:
             return (f'The {self.species} rejects the {selected_meal}')
+
+    def no_thank_you(self, selected_meal):
+        return (f'The {self.species} rejects the {selected_meal}')
