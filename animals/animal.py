@@ -15,4 +15,4 @@ class Animal:
         if selected_meal in self.diet:
             return (f'The {self.species} ate {selected_meal} for lunch')
         else:
-            print(f'The {self.species} rejects the {selected_meal}')
+            return (f'The {self.species} rejects the {selected_meal}')
