@@ -1,4 +1,4 @@
-import os
+import random
 
 from animals import RiverDolphin
 from animals import GoldDustDayGecko
@@ -9,8 +9,10 @@ from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
 
+from utilities import clear_screen
+
 def redo_feed_animal(arboretum):
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     biome_exist = 0
     animal_exist = 0
     # check for existing biomes
@@ -49,6 +51,7 @@ def redo_feed_animal(arboretum):
     print(f'Select a biome to see animals to feed')
     choice = input("> ")
     # ensure user selects valid biome to look in for animals
+    clear_screen()
     try:
         biome_type = select_dict[int(choice) -1]
     except (KeyError, ValueError, IndexError):
@@ -60,6 +63,7 @@ def redo_feed_animal(arboretum):
 
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
+    clear_screen()
     # ensure valid selection number
     if not choice.isdigit() or int(choice) <= 0:
         input("Invalid input")
@@ -82,6 +86,8 @@ def redo_feed_animal(arboretum):
 
     print(f'Which animal would you like to feed?')
     choice = input("> ")
+    clear_screen()
+
     if not choice.isdigit() or int(choice) <= 0:
         input("Invalid input")
         return
@@ -100,7 +106,7 @@ def redo_feed_animal(arboretum):
 
     food_choice = input("Pick a meal >")
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
 
     if not food_choice.isdigit() or int(food_choice) <= 0:
         input("Invalid input")
@@ -111,7 +117,13 @@ def redo_feed_animal(arboretum):
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
-    print(fed_animal.new_feed(selected_meal))
+    
+    random_value = random.randint(1, 20)
+ 
+    if random_value > 4:
+        print(fed_animal.new_feed(selected_meal))
+    else:
+        print(fed_animal.no_thank_you(selected_meal))
     input('\n\nPress any key to return to the main menu...')
 
     

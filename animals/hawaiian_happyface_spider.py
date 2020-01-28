@@ -7,3 +7,6 @@ class HawaiianHappyfaceSpider(Animal, ISwamp, IEatInsects):
         Animal.__init__(self, "Hawaiian Happy-face Spider")
         ISwamp.__init__(self)
         IEatInsects.__init__(self)
+
+    def no_thank_you(self, selected_meal):
+        return (f"The {self.species} is watching re-runs of Hawaii 5-0 and can't be bothered with {selected_meal}")
