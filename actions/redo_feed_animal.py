@@ -36,7 +36,7 @@ def redo_feed_animal(arboretum):
     real_count = 0
     habitats_count = 0
 
-
+    # find biomes already created and list for user to choose
     for index, biome_list in enumerate(arboretum.biomes):
         if len(arboretum.biomes[biome_list]) == 0:
             continue
@@ -48,19 +48,19 @@ def redo_feed_animal(arboretum):
 
     print(f'Select a biome to see animals to feed')
     choice = input("> ")
-
+    # ensure user selects valid biome to look in for animals
     try:
         biome_type = select_dict[int(choice) -1]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
-
+    # list biome types available to be selected
     for index, biome in enumerate(arboretum.biomes[biome_type]):
         print(f'{index + 1}. {biome.name}')
 
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
-
+    # ensure valid selection number
     try:
         this_biome = arboretum.biomes[biome_type][int(choice) - 1]
     except (KeyError, ValueError, IndexError):
