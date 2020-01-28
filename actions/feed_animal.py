@@ -8,7 +8,6 @@ from animals import Opeapea
 from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
-from actions import annex_habitat
 
 def feed_animal(arboretum):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -32,9 +31,6 @@ def feed_animal(arboretum):
         input("You can't feed an imaginary animal.  Please return to the main menu and release some!")
         return
                     
-
-
-
     animal = None
 
     print("1. Gold Dust Day Gecko")
@@ -47,6 +43,9 @@ def feed_animal(arboretum):
     print("8. Happy-Face Spider")
 
     animal_eating = input("Who gets to eat today?\n>")
+
+
+
 
     if animal_eating == "1":
         animal = GoldDustDayGecko()
@@ -68,7 +67,32 @@ def feed_animal(arboretum):
         pass
 
     os.system('cls' if os.name == 'nt' else 'clear')
+    # create dictionary to allow iterable functionality and look for biomes selected animal could live in - if it doesn't exist then there can't be any of that animal
 
+    selected_dict = dict()
+    my_count = 0
+    habitats_count = 0
+    animals_count = 0
+
+    for index, habitat in enumerate(animal.habitats):
+        if len(arboretum.biomes[habitat]) == 0:
+            continue
+        else:
+            my_count += 1
+            habitats_count += 1
+            selected_dict[my_count - 1] = habitat
+            print(f'{my_count}. {habitat}')
+            input("wait")
+
+    if habitats_count == 0:
+        input("You must create a biome for that animal to live in first.  Press enter to return to the main menu and add one...")
+        return
+
+    
+
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    # food animal can eat
     for index, diet in enumerate(animal.diet):
         print(f'{index + 1}. {diet}')
 
@@ -79,6 +103,3 @@ def feed_animal(arboretum):
     selected_meal = animal.diet[int(food_choice) - 1]
     print(animal.new_feed(selected_meal))
     input('\n\nPress any key to return to main menu...')
-
-
-    # input(f'The {animal.species} had {selected_meal} today.')
