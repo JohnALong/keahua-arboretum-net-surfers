@@ -8,19 +8,15 @@ from animals import Kikakapu
 from animals import Pueo
 
 from utilities import clear_screen
-from utilities import print_header
 from utilities import menu_wrapper
 
 @menu_wrapper
-def show_biome_animals(biome):
-    clear_screen()
-    
+def show_biome_animals(biome):    
     print(f'{biome.name} Animals')
     print('-------------')
     for animal in biome.animals:
         print(animal.species)
     
-    input('\n\nPress any key to return to main menu.')
     return
 
 def check_for_biomes(arboretum):
@@ -34,15 +30,8 @@ def check_for_biomes(arboretum):
     
     return biomes_present
 
-def release_animal(arboretum):
-    clear_screen()
-
-    biomes_exist = check_for_biomes(arboretum)
-    if not biomes_exist:
-        return
-
-    animal = None
-
+@menu_wrapper
+def build_menu():
     print('1. Gold Dust Day Gecko')
     print('2. River Dolphin')
     print('3. Nene Goose')
@@ -53,6 +42,17 @@ def release_animal(arboretum):
     print("7. Ope'ape'a")
     print("8. Happy-Face Spider")
     print('\nEnter "Q" to return to Main Menu.')
+    return
+
+def release_animal(arboretum):
+    clear_screen()
+
+    biomes_exist = check_for_biomes(arboretum)
+    if not biomes_exist:
+        return
+
+    animal = None
+    build_menu()
 
     choice = input("Choose animal to release > ")
 
@@ -150,6 +150,8 @@ def release_animal(arboretum):
     else:
         input('No space for this animal. Press any key to show all the animals in this biome.')
 
+    clear_screen()
     show_biome_animals(new_home)
+    input('\nPress any key to return to main menu >>')
 
     return

@@ -32,6 +32,8 @@ def main_menu():
     clear_screen()
     build_menu()
     choice = input(">> ")
+    # print(choice)
+    # input('^^choice')
 
     if choice == "1":
         annex_habitat(keahua)
@@ -51,6 +53,8 @@ def main_menu():
 
     if choice != "6":
         main_menu()
+
+    return
 
 main_menu()
 
