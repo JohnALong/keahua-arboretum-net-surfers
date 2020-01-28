@@ -11,12 +11,12 @@ from utilities import clear_screen
 from utilities import menu_wrapper
 
 @menu_wrapper
-def show_biome_animals(biome):    
+def show_biome_animals(biome):
+
     print(f'{biome.name} Animals')
     print('-------------')
     for animal in biome.animals:
-        print(animal.species)
-    
+        print(animal.species, f"Id: ({str(animal.id)[:8]})")
     return
 
 def check_for_biomes(arboretum):
@@ -60,6 +60,18 @@ def build_biome_menu(arboretum, biome_dict, biome_type):
             print(f'{actual_count}. {biome.name} [{num_current_animals} animal(s), {biome.max_animals - num_current_animals} remaining capacity]')
 
     return biome_dict
+
+@menu_wrapper
+def build_species_biome_option_menu(arboretum, animal, choice_dict):
+    actual_count = 0
+    for _, habitat in enumerate(animal.habitats):
+        if len(arboretum.biomes[habitat]) == 0:
+            continue
+        else:
+            actual_count += 1
+            choice_dict[actual_count - 1] = habitat
+            print(f'{actual_count}. {habitat}')
+    return choice_dict
 
 def release_animal(arboretum):
     clear_screen()
@@ -107,17 +119,11 @@ def release_animal(arboretum):
     clear_screen()
     # setup dict and display ONLY biomes that the animal choice can go in based on requirements
     choice_dict = dict()
-    actual_count = 0
-    for index, habitat in enumerate(animal.habitats):
-        if len(arboretum.biomes[habitat]) == 0:
-            continue
-        else:
-            actual_count += 1
-            choice_dict[actual_count - 1] = habitat
-            print(f'{actual_count}. {habitat}')
+
+    build_species_biome_option_menu(arboretum, animal, choice_dict)
 
     # user selects biome type
-    if actual_count == 0:
+    if not choice_dict:
         input('No biomes created that this animal can live in.\nPress any key and [Enter] to return to main menu to add one.')
         return
 
