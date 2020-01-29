@@ -101,7 +101,7 @@ def redo_feed_animal(arboretum):
         return
 
     # calling food menu
-    for index, diet in enumerate(animal.diet):
+    for index, diet in enumerate(fed_animal.diet):
         print(f'{index + 1}. {diet}')
 
     food_choice = input("Pick a meal >")
@@ -113,7 +113,7 @@ def redo_feed_animal(arboretum):
         return
 
     try:
-        selected_meal = animal.diet[int(food_choice) - 1]
+        selected_meal = fed_animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
