@@ -32,6 +32,31 @@ def build_biome_type_menu(arboretum, biome_type):
     # list biome types available to be selected
     for index, biome in enumerate(arboretum.biomes[biome_type]):
         print(f'{index + 1}. {biome.name}')
+    return
+
+@menu_wrapper
+def build_animal_list_menu(this_biome):
+    #print showing whether animals is empty or not
+    for index, animal in enumerate(this_biome.animals):
+        print(f'{index + 1}. {animal.species}')
+    return
+
+@menu_wrapper
+def build_food_menu(fed_animal):
+    # calling food menu
+    for index, diet in enumerate(fed_animal.diet):
+        print(f'{index + 1}. {diet}')
+    return
+
+@menu_wrapper
+def print_feeding_report(fed_animal, selected_meal):
+    random_value = random.randint(1, 20)
+ 
+    if random_value > 4:
+        print(fed_animal.new_feed(selected_meal))
+    else:
+        print(fed_animal.no_thank_you(selected_meal))
+    return
 
 def redo_feed_animal(arboretum):
     clear_screen()
@@ -70,7 +95,7 @@ def redo_feed_animal(arboretum):
         return
     
     build_biome_type_menu(arboretum, biome_type)
-
+    
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
     clear_screen()
@@ -78,20 +103,19 @@ def redo_feed_animal(arboretum):
     if not choice.isdigit() or int(choice) <= 0:
         input("Invalid input")
         return
+
+    input_index = int(choice) - 1
     
     try:
-        this_biome = arboretum.biomes[biome_type][int(choice) - 1]
+        this_biome = arboretum.biomes[biome_type][input_index]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
-    #print showing whether animals is empty or not
-    # print(f'test {arboretum.biomes[biome_type][int(choice) - 1].animals}')
-    if len(arboretum.biomes[biome_type][int(choice) - 1].animals) > 0:
-        for index, animal in enumerate(this_biome.animals):
-            print(f'{index + 1}. {animal.species}')
+    
+    build_animal_list_menu(this_biome)
 
-    else:
-        input("You have no animals to feed in this biome.  Please purchase some at the gift shop located on the main menu.")
+    if len(this_biome.animals) == 0:
+        input("You have no animals to feed in this biome.\nPlease purchase some at the gift shop located on the main menu.")
         return
 
     print(f'Which animal would you like to feed?')
@@ -110,9 +134,7 @@ def redo_feed_animal(arboretum):
         input("Invalid input.  Return to main menu")
         return
 
-    # calling food menu
-    for index, diet in enumerate(animal.diet):
-        print(f'{index + 1}. {diet}')
+    build_food_menu(fed_animal)
 
     food_choice = input("Pick a meal >")
 
@@ -123,17 +145,13 @@ def redo_feed_animal(arboretum):
         return
 
     try:
-        selected_meal = animal.diet[int(food_choice) - 1]
+        selected_meal = fed_animal.diet[int(food_choice) - 1]
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
     
-    random_value = random.randint(1, 20)
- 
-    if random_value > 4:
-        print(fed_animal.new_feed(selected_meal))
-    else:
-        print(fed_animal.no_thank_you(selected_meal))
+    print_feeding_report(fed_animal, selected_meal)
+
     input('\n\nPress any key to return to the main menu...')
 
     
