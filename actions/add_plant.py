@@ -4,21 +4,58 @@ from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
 from utilities import clear_screen
 import os
+from utilities import menu_wrapper
 
 #Set max populations for biomes
 max_plant_pops = {"Mountains": 4, "Grasslands": 15, "Rivers": 6, "Forests": 32, "Swamps": 12, "Coastlines": 3}
+
+@menu_wrapper
+def build_plant_menu():
+    print("1. Mountain Apple Tree")
+    print("2. Silversword")
+    print("3. Rainbow Eucalyptus Tree")
+    print("4. Blue Jade Vine")
+    # print()
+    return
+
+@menu_wrapper
+def build_plant_biome_menu(plant):
+    #Loop over available biome types for selected plant
+    for index, habitat in enumerate(plant.habitats):
+        print(f"{index + 1}. {habitat}")
+    return
+
+@menu_wrapper
+def build_individual_biome_menu(arboretum, chosen_habitat, bad_choices):
+    num_biomes = 0
+    open_biomes = False
+    for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
+
+        # biome_loop_counter += 1
+
+        if len(biome.plants) < biome.max_plants:
+            open_biomes = True
+            num_biomes += 1
+            print(f"{num_biomes}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
+        if len(biome.plants) >= biome.max_plants:
+            num_biomes += 1
+            bad_choices.append(num_biomes)
+            print(f"{num_biomes}. THIS BIOME UNAVAILABLE. PLEASE DO NOT PRESS CORRESPONDING NUMBER BUTTON.")
+
+    return open_biomes
+
+@menu_wrapper
+def display_plant_report(plant, new_home):
+    print(f"{plant.species} has been added to {new_home.name}.")
+    os.system(f'say {plant.species} has been added to {new_home.name}' if os.name != 'nt' else '')
+    return
 
 #Function to add plant to biome
 def add_plant(arboretum):
     clear_screen()
 
     plant = None
-
-    print("1. Mountain Apple Tree")
-    print("2. Silversword")
-    print("3. Rainbow Eucalyptus Tree")
-    print("4. Blue Jade Vine")
-    print()
+    build_plant_menu()
     plant_choice = input("Choose plant to cultivate > ")
 
     if plant_choice == "1":
@@ -35,9 +72,7 @@ def add_plant(arboretum):
         return
 
     clear_screen()
-    #Loop over available biome types for selected plant
-    for index, habitat in enumerate(plant.habitats):
-        print(f"{index + 1}. {habitat}")
+    build_plant_biome_menu(plant)
 
     print()
     habitat_choice = input("Choose your habitat type > ")
@@ -59,28 +94,12 @@ def add_plant(arboretum):
     clear_screen()
 
     #Loop thru biomes of selected type unless all biomes are at max population
-    open_biomes = False
-    num_biomes = 0
-    biome_loop_counter = 0
-    biome_loops = len(arboretum.biomes[chosen_habitat])
-    bad_choices = ["bad choices"]
+    # open_biomes = False
+    bad_choices = ["bad choices"]            
 
-    for index, biome in enumerate(arboretum.biomes[chosen_habitat]):
+    open_biomes = build_individual_biome_menu(arboretum, chosen_habitat, bad_choices)
 
-        biome_loop_counter += 1
-
-        if len(biome.plants) < biome.max_plants:
-            open_biomes = True
-            num_biomes += 1
-            print(f"{num_biomes}. {biome.name} ({len(biome.plants)}) plant(s), {biome.max_plants - len(biome.plants)} remaining capacity.")
-        if len(biome.plants) >= biome.max_plants:
-            num_biomes += 1
-            bad_choices.append(num_biomes)
-            print(f"{num_biomes}. THIS BIOME UNAVAILABLE. PLEASE DO NOT PRESS CORRESPONDING NUMBER BUTTON.")
-
-            
-
-    if open_biomes == False and biome_loop_counter == biome_loops:
+    if open_biomes == False:
         print()
         print("All biomes of that type are at maximum population. Press any key to return to main menu.")
         input()
@@ -102,6 +121,8 @@ def add_plant(arboretum):
         return
         
     clear_screen()
-    print(f"{plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}. Press any key to return to main menu.")
-    os.system(f'say {plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}' if os.name != 'nt' else '')
-    input()
+    
+    new_home = arboretum.biomes[chosen_habitat][int(biome_choice) - 1]
+    display_plant_report(plant, new_home)
+    
+    input('Press any key to return to main menu.')
