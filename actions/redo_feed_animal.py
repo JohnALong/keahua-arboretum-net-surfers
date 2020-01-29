@@ -27,6 +27,12 @@ def build_biome_menu(arboretum, select_dict):
 
     return select_dict
 
+@menu_wrapper
+def build_biome_type_menu(arboretum, biome_type):
+    # list biome types available to be selected
+    for index, biome in enumerate(arboretum.biomes[biome_type]):
+        print(f'{index + 1}. {biome.name}')
+
 def redo_feed_animal(arboretum):
     clear_screen()
     biome_exist = 0
@@ -62,9 +68,8 @@ def redo_feed_animal(arboretum):
     except (KeyError, ValueError, IndexError):
         input("Invalid input.  Return to main menu")
         return
-    # list biome types available to be selected
-    for index, biome in enumerate(arboretum.biomes[biome_type]):
-        print(f'{index + 1}. {biome.name}')
+    
+    build_biome_type_menu(arboretum, biome_type)
 
     print(f'Which {biome_type[:-1]} do you want to feed animals?')
     choice = input("> ")
