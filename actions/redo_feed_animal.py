@@ -10,6 +10,22 @@ from animals import Kikakapu
 from animals import Pueo
 
 from utilities import clear_screen
+from utilities import menu_wrapper
+
+@menu_wrapper
+def build_biome_menu(arboretum, select_dict):
+    # find biomes already created and list for user to choose
+    real_count = 0
+
+    for _, biome_list in enumerate(arboretum.biomes):
+        if len(arboretum.biomes[biome_list]) == 0:
+            continue
+        else:
+            real_count += 1
+            select_dict[real_count - 1] = biome_list
+            print(f'{real_count}. {biome_list}')
+
+    return select_dict
 
 def redo_feed_animal(arboretum):
     clear_screen()
@@ -35,18 +51,7 @@ def redo_feed_animal(arboretum):
 
     # looping through existing biomes and animals
     select_dict = dict()
-    real_count = 0
-    habitats_count = 0
-
-    # find biomes already created and list for user to choose
-    for index, biome_list in enumerate(arboretum.biomes):
-        if len(arboretum.biomes[biome_list]) == 0:
-            continue
-        else:
-            real_count += 1
-            habitats_count += 1
-            select_dict[real_count - 1] = biome_list
-            print(f'{real_count}. {biome_list}')
+    build_biome_menu(arboretum, select_dict)
 
     print(f'Select a biome to see animals to feed')
     choice = input("> ")
