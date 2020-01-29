@@ -14,7 +14,6 @@ class Animal:
     #feed animal function
     def new_feed(self, selected_meal):
         if selected_meal in self.diet:
-            os.system(f'say The {self.species} ate {selected_meal} for lunch')
             return (f'The {self.species} ate {selected_meal} for lunch')
             
         else:
