@@ -52,6 +52,7 @@ def add_plant(arboretum):
     #Print statement if no biomes of that type exist
     if len(arboretum.biomes[chosen_habitat]) == 0:
         print("No biomes of that type exist. Press any key to return to main menu.")
+        os.system('say no biomes of that type exist' if os.name != 'nt' else '')
         input()
         return
 
@@ -102,5 +103,5 @@ def add_plant(arboretum):
         
     clear_screen()
     print(f"{plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}. Press any key to return to main menu.")
-    os.system(f'say {plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}')
+    os.system(f'say {plant.species} has been added to {arboretum.biomes[chosen_habitat][int(biome_choice) - 1].name}' if os.name != 'nt' else '')
     input()

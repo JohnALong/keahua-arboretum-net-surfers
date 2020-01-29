@@ -122,6 +122,7 @@ def redo_feed_animal(arboretum):
  
     if random_value > 4:
         print(fed_animal.new_feed(selected_meal))
+        
     else:
         print(fed_animal.no_thank_you(selected_meal))
     input('\n\nPress any key to return to the main menu...')

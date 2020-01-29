@@ -10,8 +10,8 @@ from actions.add_plant import add_plant
 from utilities import clear_screen
 
 keahua = Arboretum("Keahua Arboretum", "123 Paukauila Lane")
+first_build  = True
 
-os.system('say welcome to Keahua Arboretum')
 def build_menu():
     # os.system('cls' if os.name == 'nt' else 'clear')
     clear_screen()
@@ -21,6 +21,10 @@ def build_menu():
     print("4. Add Plant to Habitat")
     print("5. Display Facility Report")
     print("6. Exit")
+    global first_build
+    if first_build:
+        os.system('say welcome to Keahua Arboretum' if os.name != 'nt' else '')
+    first_build = False
 
 
 def main_menu():
@@ -49,6 +53,9 @@ def main_menu():
 
     if choice != "6":
         main_menu()
+
+    if choice == "6":
+        os.system('say Goodbye' if os.name != 'nt' else '')
 
 
 main_menu()

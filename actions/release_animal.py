@@ -130,7 +130,9 @@ def release_animal(arboretum):
 
     # if ALL biomes of this type full, return to main menu after notification
     if actual_count == 0:
-        input(f'All biomes of this type are at max animal capacity.\nAnnex a new {biome_type[:-1]} habitat from the main menu.')
+        print(f'All biomes of this type are at max animal capacity.\nAnnex a new {biome_type[:-1]} habitat from the main menu.')
+        os.system('say All biomes of this type are at max capacity' if os.name != 'nt' else '')
+        input(" >> ")
         return
 
     print(f'Select the specific {biome_type[:-1]} to release the animal!')
@@ -147,7 +149,8 @@ def release_animal(arboretum):
         new_home.animals.append(animal)
         os.system(f'say you just added a {animal.species} to your {new_home.name}')
     else:
-        input('No space for this animal. Press any key to show all the animals in this biome.')
+        print('No space for this animal. Press any key to show all the animals in this biome.')
+        input(' >> ')
 
     show_biome_animals(new_home)
 
