@@ -3,6 +3,7 @@ from plants import Rainbow_Eucalyptus_Tree
 from plants import Blue_Jade_Vine
 from plants import Mountain_Apple_Tree
 from utilities import clear_screen
+import os
 from utilities import menu_wrapper
 
 #Set max populations for biomes
@@ -46,6 +47,7 @@ def build_individual_biome_menu(arboretum, chosen_habitat, bad_choices):
 @menu_wrapper
 def display_plant_report(plant, new_home):
     print(f"{plant.species} has been added to {new_home.name}.")
+    os.system(f'say {plant.species} has been added to {new_home.name}' if os.name != 'nt' else '')
     return
 
 #Function to add plant to biome
@@ -85,6 +87,7 @@ def add_plant(arboretum):
     #Print statement if no biomes of that type exist
     if len(arboretum.biomes[chosen_habitat]) == 0:
         print("No biomes of that type exist. Press any key to return to main menu.")
+        os.system('say no biomes of that type exist' if os.name != 'nt' else '')
         input()
         return
 

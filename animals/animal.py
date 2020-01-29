@@ -1,5 +1,6 @@
 ## PURPOSE: Base/super class for that all animal classes inherit from
 from interfaces import Identifiable
+import os
 class Animal:
 
     def __init__(self, species):
@@ -14,6 +15,7 @@ class Animal:
     def new_feed(self, selected_meal):
         if selected_meal in self.diet:
             return (f'The {self.species} ate {selected_meal} for lunch')
+            
         else:
             return (f'The {self.species} rejects the {selected_meal}')
 

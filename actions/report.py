@@ -1,4 +1,5 @@
 import os
+from utilities import clear_screen
 
 def print_animals_and_plants(biome):
     if len(biome.animals) > 0:
@@ -29,7 +30,7 @@ def build_full_report(arboretum):
                 print_animals_and_plants(biome)
                 print("-----------")
             print("-------------------------------")
-
+    os.system('say here is your report' if os.name != 'nt' else '')
     input("\n\nPress enter to return to main menu....")
     return
 
@@ -56,7 +57,7 @@ def build_single_report(arboretum):
         biome = arboretum.biomes[index_info[0]][index_info[1]]
     except KeyError:
         print("Invalid Entry")
-        os.system('cls' if os.name == 'nt' else 'clear')
+        clear_screen()
         build_single_report(arboretum)
         return
     print("Single Biome Report")
@@ -65,13 +66,14 @@ def build_single_report(arboretum):
     print(f"-----------------------------")
     print_animals_and_plants(biome)
     print(f"-----------------------------")
+    os.system(f'say here is your report for {biome.name}' if os.name != 'nt' else '')
     input("press enter to return to the main menu")
     return
     
 
 
 def build_facility_report(arboretum):
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clear_screen()
     print("Would you like a full report, or a single biome report?")
     print("1. Full")
     print("2. Single")
@@ -90,5 +92,5 @@ def build_facility_report(arboretum):
         return
 
     else:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        clear_screen()
         build_facility_report(arboretum)

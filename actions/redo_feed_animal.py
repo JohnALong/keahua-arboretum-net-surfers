@@ -11,6 +11,7 @@ from animals import Pueo
 
 from utilities import clear_screen
 from utilities import menu_wrapper
+import os
 
 @menu_wrapper
 def build_biome_menu(arboretum, select_dict):
@@ -53,9 +54,13 @@ def print_feeding_report(fed_animal, selected_meal):
     random_value = random.randint(1, 20)
  
     if random_value > 4:
-        print(fed_animal.new_feed(selected_meal))
+        fed_animal_message = fed_animal.new_feed(selected_meal)
+        print(fed_animal_message)
+        os.system(f'say {fed_animal_message}' if os.name != 'nt' else '')
     else:
-        print(fed_animal.no_thank_you(selected_meal))
+        reject_message = fed_animal.no_thank_you(selected_meal)
+        print(reject_message)
+        os.system(f'say {reject_message}' if os.name != 'nt' else '')
     return
 
 def redo_feed_animal(arboretum):

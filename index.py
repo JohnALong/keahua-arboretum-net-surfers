@@ -12,6 +12,8 @@ from utilities import print_header
 from utilities import menu_wrapper
 
 keahua = Arboretum("Keahua Arboretum", "123 Paukauila Lane")
+first_build  = True
+
 
 @menu_wrapper
 def build_menu():
@@ -22,6 +24,10 @@ def build_menu():
     print("4. Add Plant to Habitat")
     print("5. Display Facility Report")
     print("6. Exit")
+    global first_build
+    if first_build:
+        os.system('say welcome to Keahua Arboretum' if os.name != 'nt' else '')
+    first_build = False
 
 def main_menu():
     """Show Keahua Action Options
@@ -52,6 +58,9 @@ def main_menu():
 
     if choice != "6":
         main_menu()
+
+    if choice == "6":
+        os.system('say Goodbye' if os.name != 'nt' else '')
 
     return
 

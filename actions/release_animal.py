@@ -6,6 +6,7 @@ from animals import Opeapea
 from animals import Ulae
 from animals import Kikakapu
 from animals import Pueo
+import os
 
 from utilities import clear_screen
 from utilities import menu_wrapper
@@ -146,7 +147,9 @@ def release_animal(arboretum):
     # print(biome_dict)
      # if ALL biomes of this type full, return to main menu after notification
     if not biome_dict:
-        input(f'All biomes of this type are at max animal capacity.\nAnnex a new {biome_type[:-1]} habitat from the main menu.')
+        print(f'All biomes of this type are at max animal capacity.\nAnnex a new {biome_type[:-1]} habitat from the main menu.')
+        os.system('say All biomes of this type are at max capacity' if os.name != 'nt' else '')
+        input(' >> ')
         return
 
     print(f'Select the specific {biome_type[:-1]} to release the animal!')
@@ -161,8 +164,11 @@ def release_animal(arboretum):
         
     if len(new_home.animals) < new_home.max_animals:
         new_home.animals.append(animal)
+        os.system(f'say you just added a {animal.species} to your {new_home.name}' if os.name != 'nt' else '')
     else:
-        input('No space for this animal. Press any key to show all the animals in this biome.')
+        print('No space for this animal. Press any key to show all the animals in this biome.')
+        os.system(f'say no space for this animal' if os.name != 'nt' else '')
+        input(' >> ')
 
     clear_screen()
     show_biome_animals(new_home)
