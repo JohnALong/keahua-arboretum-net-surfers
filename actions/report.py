@@ -30,7 +30,7 @@ def build_full_report(arboretum):
                 print_animals_and_plants(biome)
                 print("-----------")
             print("-------------------------------")
-    os.system('say here is your report')
+    os.system('say here is your report' if os.name != 'nt' else '')
     input("\n\nPress enter to return to main menu....")
     return
 
@@ -66,6 +66,7 @@ def build_single_report(arboretum):
     print(f"-----------------------------")
     print_animals_and_plants(biome)
     print(f"-----------------------------")
+    os.system(f'say here is your report for {biome.name}' if os.name != 'nt' else '')
     input("press enter to return to the main menu")
     return
     
