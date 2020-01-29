@@ -12,13 +12,10 @@ from utilities import print_header
 from utilities import menu_wrapper
 
 keahua = Arboretum("Keahua Arboretum", "123 Paukauila Lane")
-<<<<<<< HEAD
 first_build  = True
 
-=======
 
 @menu_wrapper
->>>>>>> master
 def build_menu():
     # os.system('cls' if os.name == 'nt' else 'clear')
     print("1. Annex Habitat")
@@ -62,13 +59,10 @@ def main_menu():
     if choice != "6":
         main_menu()
 
-<<<<<<< HEAD
     if choice == "6":
         os.system('say Goodbye' if os.name != 'nt' else '')
 
-=======
     return
->>>>>>> master
 
 main_menu()
 
